@@ -16,6 +16,6 @@ function draw(){
     y += dy * easing;
 
     let d = dist(mouseX, mouseY, pmouseX, pmouseY);
-   d = map(d, 0, 600, 20, 200);
+   d = map(d, 0, 800, 20, 200);
     ellipse(x, height/2, 100);
 }
