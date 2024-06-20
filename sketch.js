@@ -247,26 +247,26 @@ class Mountain {
       }
 }
 
-// class Bush {
-//     constructor() {
-//         this.x = width;
-//         this.y = random(1000, 10);
-//         this.width = 1500;
-//         this.height = 50;
-//         this.speed = 7;
-//       }
+class Bush {
+    constructor() {
+        this.x = random(10, 100);
+        this.y = this.width
+        this.width = 1500;
+        this.height = 50;
+        this.speed = 7;
+      }
     
-//       update() {
-//         this.x -= this.speed;
-//       }
+      update() {
+        this.x -= this.speed;
+      }
     
-//       show() {
-//         fill(50, 200, 70);
+      show() {
+        fill(50, 200, 70);
         
-//         rect(this.x, this.y, this.width, this.height);
-//       }
+        rect(this.x, this.y, this.width, this.height);
+      }
     
-//       offscreen() {
-//         return this.x + this.width < 0;
-//       }
-// }
+      offscreen() {
+        return this.x + this.width < 0;
+      }
+}
