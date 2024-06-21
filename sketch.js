@@ -4,19 +4,28 @@ let farClouds = [];
 let closeClouds = [];
 let mountain = [];
 let bush = [];
+let bird = [];
 let score = 0;
-let imgHuman, imgObstacle;
+
+let imgHuman, imgObstacle; imgBird
 
 
 function preload() {
   imgHuman = loadImage('img/human.jpg');
   imgObstacle = loadImage('img/169958141.png');
+  imgBird = loadImage('img/bird.png')
 }
 
 function setup() {
   createCanvas(1000, 500);
   dino = new Dino();
 }
+
+function setup() {
+    createCanvas(1000, 500);
+    dino = new Dino();
+    bird.push(new Bird());
+  }
 
 function draw() {
   background(0, 0, 100);
@@ -37,8 +46,12 @@ function draw() {
 
   if (frameCount % 150 === 0) {
     closeClouds.push(new CloseCloud());
-  }
 
+  }
+  if (frameCount % 150 === 0) {
+    closeClouds.push(new Bird());
+
+  }
   if (frameCount % 150 === 0) {
     closeClouds.push(new Mountain());
   }
@@ -105,7 +118,7 @@ class Dino {
     this.x = 50;
     this.y = height - 50;
     this.velocityY = 0;
-    this.gravity = 0.5; //얼마나 높이 뛸수있는지
+    this.gravity = 0.7      ; //얼마나 높이 뛸수있는지
     this.isJumping = false;
   }
 
@@ -249,10 +262,10 @@ class Mountain {
 
 class Bush {
     constructor() {
-        this.x = random(10, 100);
-        this.y = this.width
+        this.x = width;
+        this.y = height - 70;
         this.width = 1500;
-        this.height = 50;
+        this.height = 150;
         this.speed = 7;
       }
     
@@ -270,3 +283,35 @@ class Bush {
         return this.x + this.width < 0;
       }
 }
+class Bird {
+    constructor() {
+      this.x = -50;
+      this.y = random(100, 200);
+      this.width = 50;
+      this.height = 30;
+      this.speed = 1;
+      this.isActive = true;
+    }
+  
+    update() {
+      if (this.isActive) {
+        this.x += this.speed; // 오른쪽으로 이동
+      }
+    }
+  
+    show() {
+      if (this.isActive) {
+        fill(50, 200, 200);
+        image(imgBird, this.x, this.y, 50, 90);
+        rect(this.x, this.y, this.width, this.height);
+      }
+    }
+  
+    offscreen() {
+      if (this.x > width) { // 화면 오른쪽 경계선을 벗어났을 때
+        this.isActive = false; // 비활성화
+        return true;
+      }
+      return false;
+    }
+  }
