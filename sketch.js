@@ -23,8 +23,8 @@ function setup() {
     createCanvas(1000, 500);
     dino = new Dino();
     bird.push(new Bird());
-    closeClouds.push(new CloseCloud()); // closeClouds 배열 초기화
-    farClouds.push(new FarCloud()); // farClouds 배열 초기화
+    closeClouds.push(new CloseCloud()); 
+    farClouds.push(new FarCloud()); 
   }
 
 function draw() {
@@ -114,14 +114,13 @@ function draw() {
     console.log('!!넘어졌다!!');
   }
   
-  // Dino class
 
 class Dino {
   constructor() {
     this.x = 50;
     this.y = height - 50;
     this.velocityY = 0;
-    this.gravity = 0.7; //얼마나 높이 뛸수있는지
+    this.gravity = 0.7; 
     this.isJumping = false;
   }
 
@@ -145,16 +144,9 @@ class Dino {
 
   show() {
     fill(0, 255, 0);
-    //여기 캐릭터 이미지
+    
     image(imgHuman, this.x, this.y - 45, 90, 90);
-    // rect(this.x, this.y, 50, 50);
 
-//     if (this.isJumping) {
-//       image(imgHuman, this.x, this.y - 45, 50, 90);
-//       //점프할때 또다른 이미지 소스 넣어주기
-//     } else {
-//       image(imgHuman, this.x, this.y - 45, 50, 90);
-//     }
  }
 }
 
@@ -173,9 +165,8 @@ class Obstacle {
 
   show() {
     fill(255, 0, 0);
-    //여기 장애물 이미지
     image(imgObstacle, this.x, this.y, 50, 50);
-    // rect(this.x, this.y, this.width, this.height);
+    
   }
 
   offscreen() {
@@ -205,10 +196,9 @@ class FarCloud {
   }
 
   show() {
-    //far cloud 
     fill(200);
     image(imgFarCloud, this.x, this.y - 45, 200, 100);
-    //rect(this.x, this.y, this.width, this.height);
+    
   }
 
   offscreen() {
@@ -230,11 +220,8 @@ class CloseCloud {
   }
 
   show() {
-    //close cloud
     fill(150);
     image(imgCloseCloud, this.x, this.y, 120, 60);
-    //2:1비율 구름 image를 넣으세요
-    //rect(this.x, this.y, this.width, this.height);
   }
 
   offscreen() {
@@ -258,7 +245,7 @@ class Mountain {
   show() {
     fill(0);
     image(imgMountain, this.x, this.y, 500, 400)
-    //rect(this.x, this.y, this.width, this.height);
+    
   }
 
   offscreen() {
@@ -282,7 +269,7 @@ class Bush {
   show() {
     fill(50, 200, 70);
     image(imgBush, this.x, this.y, 80, 80)
-    //rect(this.x, this.y, this.width, this.height);
+    
   }
 
   offscreen() {
@@ -302,20 +289,20 @@ class Bird {
 
   update() {
     if (this.isActive) {
-      this.x += this.speed; // 오른쪽으로 이동
+      this.x += this.speed; 
     }
   }
 
   show() {
     if (this.isActive) {
       fill(50, 200, 200);
-      image(imgBird, this.x, this.y - 45, 100, 90); // 이미지로 변경
+      image(imgBird, this.x, this.y - 45, 100, 90); 
     }
   }
 
   offscreen() {
-    if (this.x > width) { // 화면 오른쪽 경계선을 벗어났을 때
-      this.isActive = false; // 비활성화
+    if (this.x > width) { 
+      this.isActive = false; 
       return true;
     }
     return false;
